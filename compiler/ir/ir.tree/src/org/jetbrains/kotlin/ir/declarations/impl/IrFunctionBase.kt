@@ -36,7 +36,8 @@ abstract class IrFunctionBase<T : FunctionBaseCarrier>(
     override val isInline: Boolean,
     override val isExternal: Boolean,
     override val isExpect: Boolean,
-    returnType: IrType
+    returnType: IrType,
+    private val _original: IrFunction?
 ) :
     IrDeclarationBase<T>(startOffset, endOffset, origin),
     IrFunction,
@@ -132,6 +133,9 @@ abstract class IrFunctionBase<T : FunctionBaseCarrier>(
                 setCarrier().visibilityField = v
             }
         }
+
+    override val original: IrFunction
+        get() = _original ?: this
 
     override fun <D> acceptChildren(visitor: IrElementVisitor<Unit, D>, data: D) {
         typeParameters.forEach { it.accept(visitor, data) }

@@ -29,6 +29,8 @@ class IrFunctionBuilder : IrDeclarationBuilder() {
 
     var isFakeOverride: Boolean = false
 
+    var original: IrFunction? = null
+
     fun updateFrom(from: IrFunction) {
         super.updateFrom(from)
 

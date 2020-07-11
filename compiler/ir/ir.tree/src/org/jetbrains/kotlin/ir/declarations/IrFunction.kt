@@ -36,6 +36,8 @@ interface IrFunction :
     val isExternal: Boolean
     val isExpect: Boolean
 
+    val original: IrFunction
+
     var returnType: IrType
 
     var dispatchReceiverParameter: IrValueParameter?

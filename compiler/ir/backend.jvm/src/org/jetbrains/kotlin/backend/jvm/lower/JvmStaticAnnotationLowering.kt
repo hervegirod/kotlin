@@ -194,6 +194,7 @@ private class MakeCallsStatic(
     private fun IrSimpleFunction.copyRemovingDispatchReceiver(): IrSimpleFunction =
         buildFunWithDescriptorForInlining(descriptor) {
             updateFrom(this@copyRemovingDispatchReceiver)
+            original = this@copyRemovingDispatchReceiver.original
             name = this@copyRemovingDispatchReceiver.name
             returnType = this@copyRemovingDispatchReceiver.returnType
         }.also {
